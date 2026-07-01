@@ -143,9 +143,17 @@
       transition: all 0.2s ease;
     }
 
-    tr:hover {
+ /* Normal rows only */
+tbody tr:not(.top1):not(.top2):not(.top3):hover {
   background: #6137af;
   transform: scale(1.01);
+}
+
+/* Top 3 stay exactly the same */
+.top1:hover,
+.top2:hover,
+.top3:hover {
+  transform: none;
 }
     thead tr:hover {
   background: #4d298e;
@@ -158,35 +166,48 @@
       text-align: center;
     }
 
-    /* ========================= */
-    /* TOP 3 */
-    /* ========================= */
+  /* ========================= */
+/* PREMIUM TOP 3 */
+/* ========================= */
 
-    .top1 {
-  background: #FFD700;
-}
-
-.top1 td {
-  color: #000;
-  font-weight: bold;
+.top1 {
+  background: linear-gradient(
+    135deg,
+    #fff6b7 0%,
+    #ffd54f 20%,
+    #fecd2a 45%,
+    #e0a800 70%,
+    #b8860b 100%
+  );
 }
 
 .top2 {
-  background: #C0C0C0;
-}
-
-.top2 td {
-  color: #000;
-  font-weight: bold;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #ececec 20%,
+    #cfd2d6 45%,
+    #a9adb3 70%,
+    #7d8188 100%
+  );
 }
 
 .top3 {
-  background: #CD7F32;
+  background: linear-gradient(
+    135deg,
+    #f7d5b5 0%,
+    #d79b62 25%,
+    #b87333 50%,
+    #8c4f1f 75%,
+    #6d3916 100%
+  );
 }
 
+.top1 td,
+.top2 td,
 .top3 td {
-  color: #000;
-  font-weight: bold;
+  color: #111;
+  font-weight: 700;
 }
     /* ========================= */
     /* LOADING */
