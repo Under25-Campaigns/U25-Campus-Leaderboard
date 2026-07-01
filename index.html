@@ -8,7 +8,6 @@
 
   <title>U25 Campus Leaderboard</title>
 
-  <!-- CUSTOM FAVICON -->
   <link rel="icon" type="image/png" href="Favicon.png">
 
   <style>
@@ -38,9 +37,7 @@
   color: #000;
 }
 
-    /* ========================= */
     /* LIVE STATS BAR */
-    /* ========================= */
 
  .stats-bar {
   display: flex;
@@ -106,9 +103,8 @@
 
   
 
-    /* ========================= */
+
     /* TABLE */
-    /* ========================= */
 
     table {
   width: 100%;
@@ -143,8 +139,6 @@
       transition: all 0.2s ease;
     }
 
- /* Normal rows only */
-/* Everyone gets the zoom */
 tbody tr:hover {
   transform: scale(1.01);
 }
@@ -164,9 +158,7 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
       text-align: center;
     }
 
-  /* ========================= */
 /* PREMIUM TOP 3 */
-/* ========================= */
 
 .top1 {
   background: linear-gradient(
@@ -207,9 +199,7 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
   color: #111;
   font-weight: 700;
 }
-    /* ========================= */
     /* LOADING */
-    /* ========================= */
 
     .loading {
       text-align: center;
@@ -224,9 +214,7 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
       font-size: 13px;
     }
 
-    /* ========================= */
     /* MOBILE */
-    /* ========================= */
 
     @media(max-width: 600px) {
 
@@ -263,10 +251,8 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
   <div class="container">
 
     <h1>🏆 Live Leaderboard</h1>
-
-    <!-- ========================= -->
+    
     <!-- LIVE COUNTER -->
-    <!-- ========================= -->
 
   <div class="stats-bar">
 
@@ -282,9 +268,7 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
 
 </div>
 
-    <!-- ========================= -->
     <!-- TABLE -->
-    <!-- ========================= -->
 
     <table>
 
@@ -301,9 +285,9 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
 
     </table>
 
-    <!-- ========================= -->
+
     <!-- FOOTER -->
-    <!-- ========================= -->
+
 
     <div class="loading" id="loading">
       Loading leaderboard...
@@ -317,9 +301,7 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
 
   <script>
 
-    // ==========================================
     // GOOGLE SHEET CONFIG
-    // ==========================================
 
     const SHEET_ID =
       "1djU2TYYAbiuUVUetCm2PDihD1MqPr7odh_ChLjy4qtw";
@@ -327,16 +309,12 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
     const SHEET_NAME =
       "Leaderboard";
 
-    // ==========================================
-
     const API_URL =
       `https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`;
 
     let leaderboardData = [];
 
-    // ==========================================
     // FETCH DATA
-    // ==========================================
 
     async function fetchLeaderboard() {
 
@@ -408,9 +386,7 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
 
     }
 
-    // ==========================================
     // RANK DISPLAY
-    // ==========================================
 
     function getRankDisplay(rank) {
 
@@ -422,9 +398,7 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
 
     }
 
-    // ==========================================
-    // TOTAL REFERRALS
-    // ==========================================
+    // TOTAL REGISTRATIONS
 
     function getTotalReferrals(data) {
 
@@ -437,9 +411,7 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
 
     }
 
-    // ==========================================
     // ANIMATE COUNTER
-    // ==========================================
 
     function animateCounter(
       element,
@@ -482,10 +454,7 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
       requestAnimationFrame(step);
 
     }
-
-    // ==========================================
     // RENDER TABLE
-    // ==========================================
 
     function renderLeaderboard(data) {
 
@@ -532,16 +501,7 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
 
     }
 
-
-    // ==========================================
-    // INITIAL LOAD
-    // ==========================================
-
     fetchLeaderboard();
-
-    // ==========================================
-    // AUTO REFRESH
-    // ==========================================
 
     setInterval(fetchLeaderboard, 10000);
 
