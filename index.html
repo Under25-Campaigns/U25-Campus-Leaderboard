@@ -144,16 +144,14 @@
     }
 
  /* Normal rows only */
-tbody tr:not(.top1):not(.top2):not(.top3):hover {
-  background: #6137af;
+/* Everyone gets the zoom */
+tbody tr:hover {
   transform: scale(1.01);
 }
 
-/* Top 3 stay exactly the same */
-.top1:hover,
-.top2:hover,
-.top3:hover {
-  transform: none;
+/* Only normal rows change color */
+tbody tr:not(.top1):not(.top2):not(.top3):hover {
+  background: #6137af;
 }
     thead tr:hover {
   background: #4d298e;
