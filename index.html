@@ -19,23 +19,24 @@
       box-sizing: border-box;
     }
 
-    body {
-      background: #ffffff;
-      color: black;
-      font-family: Arial, sans-serif;
-      padding: 40px 20px;
-    }
+  body {
+  background: #ffffff;
+  color: #000;
+  font-family: Arial, sans-serif;
+  padding: 40px 20px;
+}
 
     .container {
       max-width: 900px;
       margin: auto;
     }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 25px;
-      font-size: 42px;
-    }
+   h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 42px;
+  color: #000;
+}
 
     /* ========================= */
     /* LIVE STATS BAR */
@@ -52,13 +53,13 @@
 }
 
     .live-indicator {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: black;
-      font-size: 14px;
-      letter-spacing: 1px;
-    }
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
 
     .live-dot {
       width: 10px;
@@ -92,16 +93,16 @@
   align-items: center;
   gap: 8px;
   font-size: 18px;
-  color: black;
+  color: #000;
 }
 
-    #totalCounter {
-      font-size: 20px;
-      font-weight: bold;
-      color: black;
-      display: inline-block;
-      min-width: 70px;
-    }
+   #totalCounter {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  display: inline-block;
+  min-width: 70px;
+}
 
   
 
@@ -110,41 +111,46 @@
     /* ========================= */
 
     table {
-      width: 100%;
-      border-collapse: collapse;
-      overflow: hidden;
-      border-radius: 18px;
-      background: #fd5600;
-    }
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #4d298e;
+}
 
-    thead {
-      background: #fecd2a;
-    }
+   thead {
+  background: #fecd2a;
+}
 
     th {
-      padding: 18px;
-      text-align: center;
-      font-size: 20px;
-      letter-spacing: 1px;
-      color: white;
-    }
+  padding: 18px;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #000;
+}
 
-    td {
-      padding: 18px;
-      border-top: 1px solid #262626;
-      transition: 0.2s ease;
-      text-align: center;
-      font-size: 18px;
-    }
+ td {
+  padding: 18px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  transition: 0.2s ease;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+}
 
     tr {
       transition: all 0.2s ease;
     }
 
     tr:hover {
-      background: #fd5600;
-      transform: scale(1.01);
-    }
+  background: #6137af;
+  transform: scale(1.01);
+}
+    thead tr:hover {
+  background: #fecd2a;
+  transform: none;
+}
 
     .rank {
       font-size: 22px;
@@ -157,17 +163,31 @@
     /* ========================= */
 
     .top1 {
-      background: rgba(255, 215, 0, 0.08);
-    }
+  background: #FFD700;
+}
 
-    .top2 {
-      background: rgba(192, 192, 192, 0.08);
-    }
+.top1 td {
+  color: #000;
+  font-weight: bold;
+}
 
-    .top3 {
-      background: rgba(205, 127, 50, 0.08);
-    }
+.top2 {
+  background: #C0C0C0;
+}
 
+.top2 td {
+  color: #000;
+  font-weight: bold;
+}
+
+.top3 {
+  background: #CD7F32;
+}
+
+.top3 td {
+  color: #000;
+  font-weight: bold;
+}
     /* ========================= */
     /* LOADING */
     /* ========================= */
