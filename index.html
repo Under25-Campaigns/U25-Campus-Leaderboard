@@ -313,79 +313,49 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
       `https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`;
 
     let leaderboardData = [];
+let fullLeaderboardData = [];
 
     // FETCH DATA
 
- 
-    async function fetchLeaderboard() {
+ async function fetchLeaderboard() {
+  try {
+    const response = await fetch(API_URL);
+    const data = await response.json();
 
-      try {
+    // Sort full data by registrations/referrals
+    data.sort((a, b) =>
+      Number(b.Referrals || 0) - Number(a.Referrals || 0)
+    );
 
-        const response =
-          await fetch(API_URL);
+    // Keep FULL dataset with proper rank
+    fullLeaderboardData = data.map((player, index) => ({
+      ...player,
+      actualRank: index + 1
+    }));
 
-        const data =
-          await response.json();
+    // Keep only TOP 30 for display
+    leaderboardData = fullLeaderboardData.slice(0, 30);
 
-        // SORT DESCENDING
+    // Render only top 30
+    renderLeaderboard(leaderboardData);
 
-        data.sort((a, b) =>
-          Number(b.Referrals) -
-          Number(a.Referrals)
-        );
+    // Total registrations from ALL colleges
+    const total = getTotalReferrals(fullLeaderboardData);
 
-        // PRESERVE ORIGINAL RANKS
+    const counter = document.getElementById("totalCounter");
+    const currentValue =
+      Number(counter.innerText.replace(/,/g, "")) || 0;
 
-        leaderboardData =
-          data.map((player, index) => ({
+    animateCounter(counter, currentValue, total);
 
-            ...player,
+    document.getElementById("loading").style.display = "none";
 
-            actualRank: index + 1
-
-          }));
-
-        // RENDER TABLE
-
-        renderLeaderboard(leaderboardData);
-
-        // UPDATE TOTAL COUNTER
-
-        const total =
-          getTotalReferrals(leaderboardData);
-
-        const counter =
-          document.getElementById("totalCounter");
-
-        const currentValue =
-          Number(
-            counter.innerText.replace(/,/g, "")
-          ) || 0;
-
-        animateCounter(
-          counter,
-          currentValue,
-          total
-        );
-
-        document
-          .getElementById("loading")
-          .style.display = "none";
-
-      }
-
-      catch (error) {
-
-        console.error(error);
-
-        document
-          .getElementById("loading")
-          .innerHTML =
-          "Failed to load leaderboard.";
-
-      }
-
-    }
+  } catch (error) {
+    console.error(error);
+    document.getElementById("loading").innerHTML =
+      "Failed to load leaderboard.";
+  }
+}
 
     // RANK DISPLAY
 
