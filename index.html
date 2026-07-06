@@ -316,45 +316,34 @@ tbody tr:not(.top1):not(.top2):not(.top3):hover {
 
     // FETCH DATA
 
-  async function fetchLeaderboard() {
-  try {
-    const response = await fetch(API_URL);
-    const data = await response.json();
+ 
+    async function fetchLeaderboard() {
 
-    // 1) Sort full data
-    data.sort((a, b) =>
-      Number(b.Referrals) - Number(a.Referrals)
-    );
+      try {
 
-    // 2) TOTAL should be from ALL rows in the sheet
-    const total = getTotalReferrals(data);
+        const response =
+          await fetch(API_URL);
 
-    // 3) Only top 30 should be displayed
-    const top30 = data.slice(0, 30);
+        const data =
+          await response.json();
 
-    // 4) Preserve ranks for displayed rows
-    leaderboardData = top30.map((player, index) => ({
-      ...player,
-      actualRank: index + 1
-    }));
+        // SORT DESCENDING
 
-    // 5) Render only top 30
-    renderLeaderboard(leaderboardData);
+        data.sort((a, b) =>
+          Number(b.Referrals) -
+          Number(a.Referrals)
+        );
 
-    // 6) Update counter with ALL responses total
-    const counter = document.getElementById("totalCounter");
-    const currentValue =
-      Number(counter.innerText.replace(/,/g, "")) || 0;
+        // PRESERVE ORIGINAL RANKS
 
-    animateCounter(counter, currentValue, total);
+        leaderboardData =
+          data.map((player, index) => ({
 
-    document.getElementById("loading").style.display = "none";
-  } catch (error) {
-    console.error(error);
-    document.getElementById("loading").innerHTML =
-      "Failed to load leaderboard.";
-  }
-}
+            ...player,
+
+            actualRank: index + 1
+
+          }));
 
         // RENDER TABLE
 
